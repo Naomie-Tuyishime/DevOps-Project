@@ -67,11 +67,9 @@ public class SortingTest {
         System.out.println("✅ Name sorting " + (ascending ? "A→Z" : "Z→A") + " passed");
     }
 
-
     private static void checkPriceSorting(Page page, boolean ascending) {
         Locator prices = page.locator("[data-test='product-price']");
         int total = prices.count();
-
         List<Integer> priceValues = new ArrayList<>();
         for (int i = 0; i < total; i++) {
             priceValues.add(extractNumber(prices.nth(i).innerText().trim()));
