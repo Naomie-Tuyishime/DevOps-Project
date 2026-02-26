@@ -1,12 +1,12 @@
-name: runnning unit test
+name: running unit test
 
 on:
   push:
     branches:
-      - ft/* 
+      - ft/*
   pull_request:
     branches:
-      - main   
+      - dev
 
 jobs:
   build-and-test:
