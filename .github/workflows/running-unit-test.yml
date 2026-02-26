@@ -3,7 +3,7 @@ name: runnning unit test
 on:
   push:
     branches:
-      - ft/*   # your feature branches
+      - ft/* 
   pull_request:
     branches:
       - dev
