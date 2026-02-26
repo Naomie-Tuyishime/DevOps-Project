@@ -14,7 +14,6 @@ public class SortingTest {
         page.navigate("https://practicesoftwaretesting.com/");
 
         Locator sortDropdown = page.locator("[data-test='sort']");
-
         sortDropdown.selectOption("name,asc");
         page.waitForTimeout(2000);
         checkNameSorting(page, true);
