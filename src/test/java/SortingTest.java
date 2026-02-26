@@ -109,7 +109,7 @@ public class SortingTest {
     }
 
 
-    private static int extractNumber(String text) {
+    private sttic int extractNumber(String text) {
         String numberOnly = text.replaceAll("[^0-9]", "");
         return numberOnly.isEmpty() ? 0 : Integer.parseInt(numberOnly);
     }
