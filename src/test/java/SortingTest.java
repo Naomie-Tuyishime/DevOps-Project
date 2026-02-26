@@ -51,8 +51,8 @@ page.navigate("https://practicesoftwaretesting.com/");
 
 
 
-//        browser.close();
-//        playwright.close();
+        browser.close();
+        playwright.close();
 
 
 
