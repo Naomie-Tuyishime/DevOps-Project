@@ -3,8 +3,7 @@ name: runnning unit test
 on:
   push:
     branches:
-      - ft/*
-      - main  
+      - ft/* 
   pull_request:
     branches:
       - main   
