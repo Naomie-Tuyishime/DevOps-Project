@@ -47,9 +47,7 @@ page.navigate("https://practicesoftwaretesting.com/");
         page.waitForTimeout(3000);
         sortDropdown.selectOption("co2_rating,asc");
         page.waitForTimeout(3000);
-        sortDropdown.selectOption("co2_rating,desc");
-
-
+        sortDropdown.selectOption("co2_rating,desc")
 
         browser.close();
         playwright.close();
