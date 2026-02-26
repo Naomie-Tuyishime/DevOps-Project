@@ -1,19 +1,20 @@
-name: Java CI
+name: Java CI Pipeline
 
 on:
   push:
     branches:
-      - ft/*  
+      - '**'        # runs on every push (any branch)
   pull_request:
     branches:
-      - main
+      - '**'        # runs on every PR
+  workflow_dispatch:   # allows manual trigger
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -21,9 +22,13 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: maven
 
       - name: Install dependencies
-        run: mvn install -DskipTests
+        run: mvn clean install -DskipTests
 
-      - name: Run tests
+      - name: Build project
+        run: mvn compile
+
+      - name: Run automated tests
         run: mvn test
