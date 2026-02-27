@@ -103,7 +103,7 @@ public class SortingTest {
                         "CO2 sorting failed: " + co2Values.get(i) + " vs " + co2Values.get(i + 1));
             }
         }
-        System.out.println("✅ CO2 sorting " + (ascending ? "Low→High" : "High→Low") + " passedff");
+        System.out.println("✅ CO2 sorting " + (ascending ? "Low→High" : "High→Low") + " passed");
     }
 
     private static int extractNumber(String text) {
