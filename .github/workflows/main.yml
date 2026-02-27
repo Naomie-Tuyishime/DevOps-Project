@@ -8,6 +8,7 @@ on:
     branches:
       - '**'       
   workflow_dispatch:  
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -31,3 +32,18 @@ jobs:
 
       - name: Run automated tests
         run: mvn test
+
+
+  auto-create-pr:
+    if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          title: "Auto PR from ${{ github.ref_name }}"
+          body: "This PR was automatically created by GitHub Actions after successful CI."
