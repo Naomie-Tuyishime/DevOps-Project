@@ -1,0 +1,27 @@
+trigger:
+- '*'
+
+pr:
+- '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: BuildAndTest
+  steps:
+  - checkout: self
+
+  - task: UseJavaVersion@1
+    inputs:
+      versionSpec: '17'
+      architecture: 'x64'
+
+  - script: mvn clean install -DskipTests
+    displayName: 'Install dependencies'
+
+  - script: mvn compile
+    displayName: 'Build project'
+
+  - script: mvn test
+    displayName: 'Run automated tests'
