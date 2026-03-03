@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+      - '*'   # Run on all branches
+
+pr:
+  branches:
+    include:
+      - '*'   # Run on all PRs
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: BuildAndTest
+  displayName: 'Build and Test Java Project'
+  steps:
+  - checkout: self
+    displayName: 'Checkout repository'
+
+  - task: JavaToolInstaller@0
+    inputs:
+      versionSpec: '17'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
+    displayName: 'Set up JDK 17'
+
+  - script: mvn clean install -DskipTests
+    displayName: 'Install dependencies'
+
+  - script: mvn compile
+    displayName: 'Build project'
+
+  - script: mvn test
+    displayName: 'Run automated tests'
