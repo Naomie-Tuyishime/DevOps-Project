@@ -32,7 +32,6 @@ public class CartTest {
         addToCartBtn.click();
         Locator viewCartLink = page.locator("a.added_to_cart.wc-forward");
         viewCartLink.click();
-
         assertThat(page).hasURL("https://askomdch.com/cart/");
 
         Locator cartTable = page.locator("table.shop_table.cart");
